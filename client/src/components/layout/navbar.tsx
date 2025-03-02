@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
-import { Home, Users, MessageSquare, Share2, BookOpen, HelpCircle } from "lucide-react";
+import { Home, Users, MessageSquare, Share2, BookOpen, HelpCircle, User } from "lucide-react";
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -54,13 +54,25 @@ export default function Navbar() {
                 );
               })}
               {user && (
-                <Button
-                  variant="ghost"
-                  className="text-gray-300 hover:bg-[#6A5638] hover:text-white transition-colors duration-200"
-                  onClick={() => logoutMutation.mutate()}
-                >
-                  Logout
-                </Button>
+                <>
+                  <Link href="/profile">
+                    <a className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                      location === "/profile"
+                        ? "bg-[#AC9155] text-white"
+                        : "text-gray-300 hover:bg-[#6A5638] hover:text-white"
+                    }`}>
+                      <User className="w-4 h-4 mr-2" />
+                      Profile
+                    </a>
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    className="text-gray-300 hover:bg-[#6A5638] hover:text-white transition-colors duration-200"
+                    onClick={() => logoutMutation.mutate()}
+                  >
+                    Logout
+                  </Button>
+                </>
               )}
             </div>
           </div>

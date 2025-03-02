@@ -12,6 +12,7 @@ import SocialMediaPage from "@/pages/social-media-page";
 import ResourcesPage from "@/pages/resources-page";
 import ChatbotPage from "@/pages/chatbot-page";
 import AboutPage from "@/pages/about-page";
+import ProfilePage from "@/pages/profile-page";
 import Navbar from "./components/layout/navbar";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
         <ProtectedRoute path="/social-media" component={SocialMediaPage} />
         <ProtectedRoute path="/resources" component={ResourcesPage} />
         <ProtectedRoute path="/chatbot" component={ChatbotPage} />
+        <ProtectedRoute path="/profile" component={ProfilePage} />
         <Route component={NotFound} />
       </Switch>
     </>
