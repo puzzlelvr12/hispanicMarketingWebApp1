@@ -19,14 +19,17 @@ export default function Navbar() {
   if (!user && location === "/auth") return null;
 
   return (
-    <nav className="bg-[#501214] text-white">
+    <nav className="bg-[#501214] shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/">
-              <a className="flex items-center font-brandon text-xl">
-                <span className="text-[#AC9155]">Hispanic</span>
-                <span className="ml-2">Business Hub</span>
+              <a className="flex items-center">
+                <img 
+                  src="/assets/SCALEUP-Logo-2-White.png" 
+                  alt="SCALEUP Logo" 
+                  className="h-8 w-auto"
+                />
               </a>
             </Link>
           </div>
@@ -38,7 +41,7 @@ export default function Navbar() {
                 return (
                   <Link key={item.name} href={item.href}>
                     <a
-                      className={`flex items-center px-3 py-2 rounded-md text-sm font-medium ${
+                      className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                         location === item.href
                           ? "bg-[#AC9155] text-white"
                           : "text-gray-300 hover:bg-[#6A5638] hover:text-white"
@@ -53,7 +56,7 @@ export default function Navbar() {
               {user && (
                 <Button
                   variant="ghost"
-                  className="text-gray-300 hover:bg-[#6A5638] hover:text-white"
+                  className="text-gray-300 hover:bg-[#6A5638] hover:text-white transition-colors duration-200"
                   onClick={() => logoutMutation.mutate()}
                 >
                   Logout
