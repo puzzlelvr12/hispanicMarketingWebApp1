@@ -1,19 +1,22 @@
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
+import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
 import { Home, Users, MessageSquare, Share2, BookOpen, HelpCircle, User } from "lucide-react";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export default function Navbar() {
   const [location] = useLocation();
   const { user, logoutMutation } = useAuth();
+  const { t } = useLanguage();
 
   const navigation = [
-    { name: "Home", href: "/", icon: Home },
-    { name: "Questions", href: "/questions", icon: HelpCircle },
-    { name: "Social Media", href: "/social-media", icon: Share2 },
-    { name: "Resources", href: "/resources", icon: BookOpen },
-    { name: "AI Assistant", href: "/chatbot", icon: MessageSquare },
-    { name: "About", href: "/about", icon: Users },
+    { name: t("nav.home"), href: "/", icon: Home },
+    { name: t("nav.questions"), href: "/questions", icon: HelpCircle },
+    { name: t("nav.social"), href: "/social-media", icon: Share2 },
+    { name: t("nav.resources"), href: "/resources", icon: BookOpen },
+    { name: t("nav.assistant"), href: "/chatbot", icon: MessageSquare },
+    { name: t("nav.about"), href: "/about", icon: Users },
   ];
 
   if (!user && location === "/auth") return null;
@@ -62,15 +65,16 @@ export default function Navbar() {
                         : "text-gray-300 hover:bg-[#6A5638] hover:text-white"
                     }`}>
                       <User className="w-4 h-4 mr-2" />
-                      Profile
+                      {t("nav.profile")}
                     </a>
                   </Link>
+                  <LanguageSwitcher />
                   <Button
                     variant="ghost"
                     className="text-gray-300 hover:bg-[#6A5638] hover:text-white transition-colors duration-200"
                     onClick={() => logoutMutation.mutate()}
                   >
-                    Logout
+                    {t("nav.logout")}
                   </Button>
                 </>
               )}

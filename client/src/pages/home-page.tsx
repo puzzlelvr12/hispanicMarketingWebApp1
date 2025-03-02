@@ -3,35 +3,38 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { MessageSquare, Share2, BookOpen, HelpCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/hooks/use-language";
 
 const MotionCard = motion(Card);
 
 export default function HomePage() {
+  const { t } = useLanguage();
+
   const features = [
     {
-      title: "Business Diagnostics",
-      description: "Answer key questions to get personalized recommendations",
+      title: t("business.diagnostics"),
+      description: t("business.diagnostics.desc"),
       icon: HelpCircle,
       href: "/questions",
       color: "bg-[#EB2E47]",
     },
     {
-      title: "Social Media Strategy",
-      description: "Get AI-powered social media marketing suggestions",
+      title: t("social.media"),
+      description: t("social.media.desc"),
       icon: Share2,
       href: "/social-media",
       color: "bg-[#EBBA45]",
     },
     {
-      title: "Resource Center",
-      description: "Access valuable resources and tools for your business",
+      title: t("resource.center"),
+      description: t("resource.center.desc"),
       icon: BookOpen,
       href: "/resources",
       color: "bg-[#266725]",
     },
     {
-      title: "AI Assistant",
-      description: "Chat with our AI to get instant business advice",
+      title: t("ai.assistant"),
+      description: t("ai.assistant.desc"),
       icon: MessageSquare,
       href: "/chatbot",
       color: "bg-[#007096]",
@@ -53,10 +56,10 @@ export default function HomePage() {
             className="h-16 mx-auto mb-6"
           />
           <h1 className="font-brandon text-4xl font-bold text-[#501214] mb-4 tracking-wide">
-            EMPOWER YOUR BUSINESS
+            {t("home.title")}
           </h1>
           <p className="font-nunito text-xl text-[#363534] max-w-2xl mx-auto">
-            Access AI-powered tools and resources designed specifically for Hispanic businesses
+            {t("home.subtitle")}
           </p>
         </motion.div>
 
@@ -93,7 +96,7 @@ export default function HomePage() {
             asChild 
             className="bg-[#AC9155] hover:bg-[#6A5638] transition-colors duration-300 text-lg px-8 py-6"
           >
-            <Link href="/questions">Start Your Business Assessment</Link>
+            <Link href="/questions">{t("home.start")}</Link>
           </Button>
         </motion.div>
       </div>
